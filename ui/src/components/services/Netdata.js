@@ -79,9 +79,19 @@ export default class Netdata extends Component {
   };
 
   getData = () => {
+    console.log('getData called');
     this.state.monitors.map(async monitor => {
       let { endpoint, value } = monitor;
-      const svg = await axios.get(this.props.url + '/api/v1/badge.svg?chart=' + endpoint + '&units=null');
+      const svg = await axios.get(this.props.url + '/api/v1/badge.svg?chart=' + endpoint + '&units=null', {
+        auth: {
+          username: 'ops',
+          password: '486520'
+        },
+        headers: {
+          'X-Auth-Token': 'a9f6c6d0-0d8d-11ea-b9a2-0242ac170011'
+        }
+      });
+      console.log('SVG' + svg);
       const temp = document.createElement('div');
       temp.innerHTML = svg.data;
       const html = temp.firstChild;

@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 
-import UptimeRobot from './services/UptimeRobot.js';
-import Unifi from './services/Unifi.js';
+// import UptimeRobot from './services/UptimeRobot.js';
+// import Unifi from './services/Unifi.js';
 import Netdata from './services/Netdata.js';
-import Seafile from './services/Seafile.js';
+// import Seafile from './services/Seafile.js';
 import Plex from './services/Plex.js';
 
 import Service from './Service.js';
 
 export default class Services extends Component {
   state = {
-    uptimeRobot: undefined,
-    unifi: undefined,
-    netdataDo: undefined,
+    // uptimeRobot: undefined,
+    // unifi: undefined,
+    // netdataDo: undefined,
     netdataHome: undefined,
-    seafile: undefined,
+    // seafile: undefined,
     plex: undefined
   };
 
   render = () => (
     <div className="flex flex-col lg:flex-row max-w-full mx-auto text-sm xl:text-base pt-8">
-      <div className="lg:w-1/5 px-4">
+      {/* <div className="lg:w-1/5 px-4">
         <h2>Uptime Robot</h2>
         <Service
           endpoint={process.env.REACT_APP_UPTIME_ROBOT_ENDPOINT}
@@ -29,9 +29,9 @@ export default class Services extends Component {
         >
           <UptimeRobot data={this.state.uptimeRobot} />
         </Service>
-      </div>
+      </div> */}
 
-      <div className="lg:w-1/5 px-4">
+      {/* <div className="lg:w-1/5 px-4">
         <h2>Unifi</h2>
         <Service
           endpoint={process.env.REACT_APP_UNIFI_ENDPOINT}
@@ -40,29 +40,31 @@ export default class Services extends Component {
         >
           <Unifi data={this.state.unifi} />
         </Service>
-      </div>
+      </div> */}
 
       <div className="lg:w-1/5 px-4">
         <h2>Netdata</h2>
         <ul>
-          <Service
+          {/* <Service
             endpoint={process.env.REACT_APP_NETDATA_DO_ENDPOINT}
             refreshRate={5000}
             successFetch={({ data }) => this.setState({ netdataDo: data })}
           >
             <Netdata data={this.state.netdataDo} url={process.env.REACT_APP_NETDATA_DO_URL} />
-          </Service>
+          </Service> */}
           <Service
             endpoint={process.env.REACT_APP_NETDATA_HOME_ENDPOINT}
-            refreshRate={5000}
+            refreshRate={100000}
             successFetch={({ data }) => this.setState({ netdataHome: data })}
           >
+            {console.log('netdataHome')}
+            {console.log(this.state.netdataHome)}
             <Netdata data={this.state.netdataHome} url={process.env.REACT_APP_NETDATA_HOME_URL} />
           </Service>
         </ul>
       </div>
 
-      <div className="lg:w-1/5 px-4">
+      {/* <div className="lg:w-1/5 px-4">
         <h2>Seafile</h2>
         <Service
           endpoint={process.env.REACT_APP_SEAFILE_ENDPOINT}
@@ -71,7 +73,7 @@ export default class Services extends Component {
         >
           <Seafile data={this.state.seafile} />
         </Service>
-      </div>
+      </div> */}
 
       <div className="lg:w-1/5 px-4">
         <h2>Plex</h2>
